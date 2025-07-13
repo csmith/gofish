@@ -39,7 +39,7 @@ func (g *goVetChecker) Check(workDir string) ([]Issue, error) {
 	scanner := bufio.NewScanner(&stderr)
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
-		if line != "" {
+		if line != "" && !strings.HasPrefix(line, "go: downloading") {
 			issues = append(issues, Issue{
 				Message: line,
 			})
