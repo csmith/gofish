@@ -50,7 +50,7 @@ gofish is designed to be run as a `Stop` hook in Claude Code.
 
 1. **Install gofish globally**:
    ```bash
-   go install github.com/yourusername/gofish/cmd/gofish@latest
+   go install github.com/csmith/gofish/cmd/gofish@latest
    ```
 
 2. **Configure Claude Code settings**: Add the following to your Claude Code `settings.json`:
