@@ -83,13 +83,13 @@ func init() {
 		packageManager: "npm",
 		lockFile:       "package-lock.json",
 		executable:     "npm",
-		command:        []string{"test"},
+		command:        []string{"run", "test"},
 	})
 	Register(&jsTestChecker{
 		name:           "bun-test",
 		packageManager: "bun",
 		lockFile:       "bun.lock",
 		executable:     "bun",
-		command:        []string{"test"},
+		command:        []string{"run", "test"},
 	})
 }
