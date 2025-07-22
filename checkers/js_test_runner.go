@@ -58,6 +58,10 @@ func (c *jsTestChecker) Check(workDir string) ([]Issue, error) {
 	scanner := bufio.NewScanner(&stdout)
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
+		// Skip command line output from bun
+		if strings.HasPrefix(line, "$") {
+			continue
+		}
 		if strings.Contains(line, "FAIL") ||
 			strings.Contains(line, "✗") ||
 			strings.Contains(line, "×") ||
