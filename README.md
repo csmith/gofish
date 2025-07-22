@@ -17,6 +17,7 @@ finished working.
 
 - svelte-check (if listed as a dependency)
 - prettier (if listed as a dependency)
+- test (if "test" script is defined in package.json)
 
 ## Installation
 
