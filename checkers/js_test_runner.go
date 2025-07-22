@@ -47,7 +47,10 @@ func (c *jsTestChecker) Check(workDir string) ([]Issue, error) {
 		scanner := bufio.NewScanner(&stderr)
 		for scanner.Scan() {
 			line := strings.TrimSpace(scanner.Text())
-			if line != "" && !strings.HasPrefix(line, "npm WARN") {
+			if line != "" &&
+				!strings.HasPrefix(line, "npm WARN") &&
+				!strings.HasPrefix(line, "$") &&
+				!strings.HasPrefix(line, "> ") {
 				issues = append(issues, Issue{
 					Message: line,
 				})
@@ -58,8 +61,8 @@ func (c *jsTestChecker) Check(workDir string) ([]Issue, error) {
 	scanner := bufio.NewScanner(&stdout)
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
-		// Skip command line output from bun
-		if strings.HasPrefix(line, "$") {
+		// Skip command line output from bun and npm
+		if strings.HasPrefix(line, "$") || strings.HasPrefix(line, "> ") {
 			continue
 		}
 		if strings.Contains(line, "FAIL") ||
